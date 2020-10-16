@@ -9,7 +9,7 @@ class Matrix(Ui_MainWindow, QtWidgets.QMainWindow):
         super().__init__()
         self.setupUi(self)
 
-    def size_change(self, matrix_name):  # Resizing the matrix
+    def size_change(self, matrix_name):
         self.hidespin(matrix_name)
         row_number = getattr(self, 'spin_1%s' % matrix_name).value()
         column_number = getattr(self, 'spin_2%s' % matrix_name).value()
@@ -176,7 +176,7 @@ class Matrix(Ui_MainWindow, QtWidgets.QMainWindow):
                     for c in range(1, column_number + 1):
                         getattr(self, 'spin_%s%s%s' % (r, c, matrix_name)).setValue(A[r - 1, c - 1])
 
-    def rank(self, matrix_name):  # Ранг матрицы
+    def rank(self, matrix_name):
         row_number = getattr(self, 'spin_1%s' % matrix_name).value()
         column_number = getattr(self, 'spin_2%s' % matrix_name).value()
         A = np.zeros((row_number, column_number))
@@ -340,7 +340,6 @@ class Matrix(Ui_MainWindow, QtWidgets.QMainWindow):
 
     def hide_qr(self):
         qr = ['q', 'r']
-
         for r in range(1, 6):
             for c in range(1, 6):
                 for k in qr:
